@@ -1,0 +1,8 @@
+.cont_wall {grid-area: wall}
+
+.cont_wall {
+  margin: 20px;
+  background-color: rgba(196, 202, 202, 0.247);
+
+}
+

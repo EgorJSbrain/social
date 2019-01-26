@@ -1,0 +1,17 @@
+.avatar {grid-area: avatar}
+
+.avatar {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  background-color: rgba(196, 202, 202, 0.247);
+
+}
+
+.avatar img {
+  margin: 10px;
+  width: 240px;
+  height: 320px;
+  border: 1px solid black;
+}
+

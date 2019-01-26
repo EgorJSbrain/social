@@ -1,0 +1,19 @@
+
+
+.block {
+  padding: 5px;
+  width: 320px;
+  height: 130px;
+  margin: 10px;
+  background-color: rgba(196, 202, 202, 0.247);
+  
+}
+
+.img {
+  margin: 5px;
+  width: 60px;
+  height: 60px;
+  
+  border-radius: 35px;
+}
+

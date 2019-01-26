@@ -1,0 +1,13 @@
+.footer1 {grid-area: footer}
+
+
+.footer1 {
+
+  background-color: blueviolet;
+  
+}
+
+.footer1 img {
+  width: 30px;
+  height: 30px;
+}

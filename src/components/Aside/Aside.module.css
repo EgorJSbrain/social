@@ -1,0 +1,10 @@
+.aside1 {
+  grid-area: aside
+}
+
+
+.aside1 {
+  margin: 10px;
+  background-color: rgb(132, 100, 161);
+  display: none;
+}
