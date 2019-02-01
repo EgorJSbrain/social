@@ -7,7 +7,7 @@ const Dialog = (props) => {
     return (
         <div className={s.block}>
             <div className={s.img}>
-               <img src={props.dialog.photo} className={s.img}></img>
+               <img src={props.dialog.photo} alt="" className={s.img}></img>
             </div>
             <div>
                Имя: {props.dialog.name}

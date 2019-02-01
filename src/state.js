@@ -31,11 +31,11 @@ const state = {
         messages: [
         {
             id: 1,
-            message: 'utiorutiutoir'
+            message: 'Привет!!!!!!!!!! ЧЁ КАК'
         },
         {
             id: 2,
-            message: 'utiorutiutoir'
+            message: 'вдародыпрыпырпплр аы радырарпы трыоры оыорыопы тпытыа ааааааааааааааааааааааааааааааааааааа ааааааааааааааааааааааааааааа ghghgh hjujukuku jukikikikililililil gfrfdcdc '
         },
         {
             id: 3,

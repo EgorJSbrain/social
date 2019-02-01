@@ -3,7 +3,7 @@ import style from './Discription.module.css'
 
 
 const Discription = ({data }) => {
-  debugger;
+  // debugger;
   return (
    
         <div className={style.info}> 

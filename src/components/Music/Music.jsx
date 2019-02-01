@@ -1,5 +1,5 @@
 import React from 'react';
-import footer from './Music.module.css'
+// import footer from './Music.module.css'
 
 
 const Music = () => {

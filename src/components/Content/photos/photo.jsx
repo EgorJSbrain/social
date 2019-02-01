@@ -7,7 +7,7 @@ const UserPhotos = () => {
     <div className={photo.userphoto}>
     
           <div>
-            <img src=""></img>
+            <img src="" alt=""></img>
           </div>
          
     </div>

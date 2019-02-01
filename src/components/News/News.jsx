@@ -1,5 +1,5 @@
 import React from 'react';
-import footer from './News.module.css'
+// import footer from './News.module.css'
 
 
 const News = () => {
