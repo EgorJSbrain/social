@@ -7,6 +7,7 @@ import AvatarDiscription from './avatar-discription/AvatarDiscription';
 
 
 const Content = ( props ) => {
+let addPost = props.addPost;
 let photo = props.data.photo;
 let posts = props.posts;
     // debugger;
@@ -16,10 +17,10 @@ let posts = props.posts;
         {/* <div>
           <img src="https://images.pexels.com/photos/1146708/pexels-photo-1146708.jpeg?cs=srgb&dl=4k-wallpaper-agriculture-android-wallpaper-1146708.jpg&fm=jpg"></img>
         </div> */}
-       
-        <AvatarDiscription photo={photo} data={props.data}/>
-        <ContentWall posts={posts}/>
-        <UserPhotos />
+        <span>yo</span>
+      <AvatarDiscription photo={photo} data={props.data}/>
+        <ContentWall posts={posts} addPost={addPost}/>
+       {/*   <UserPhotos /> */}
       
     </div>
     

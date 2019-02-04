@@ -11,7 +11,7 @@ const Header = () => {
                 <span className={wrapper.name}>reactNet</span>
             </div>
             <div>
-                <input value="" className={wrapper.input}/>
+                <input type="text" className={wrapper.input}/>
             </div>
             <div className={wrapper.button1}>
                 Sign In

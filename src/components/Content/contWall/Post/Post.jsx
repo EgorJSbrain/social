@@ -6,7 +6,7 @@ const Post = (props) => {
   
   return (
       <div className={style}>
-         text
+         {props.post}
       </div>
     
     

@@ -6,6 +6,13 @@ import PropTypes from 'prop-types';
 
 const Dialogs = (props) => {
 //    debugger
+    let message = props.addMessage;
+    let newMessageElement = React.createRef();
+    let addMessage = () => {
+        let text = newMessageElement.current.value;
+        alert(text);
+      }
+
     const dialogs = props.users.map((dialog) => <Dialog dialog={dialog} key={dialog.id}/>);
     const messages = props.messages.map((message) => <Message message={message} key={message.id}/>);
     return (
@@ -16,9 +23,17 @@ const Dialogs = (props) => {
             </div>
             <div className={m.message}>
                 {messages}
+                <div>
+                    <div>
+                        <textarea ref={ newMessageElement }></textarea>
+                    </div>
+                        
+                    <div>
+                        <button onClick={ addMessage }>Add message</button>
+                    </div>
+                </div>
             </div>
-            
-
+               
         </div>
     )
 
