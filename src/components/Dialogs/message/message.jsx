@@ -4,14 +4,10 @@ import message from './message.module.css'
 
 const Message = (props) => {
     return (
-        <div className={message.mes}>
-            
-            
+        <div className={message.mes}> 
             <div>   
-                <div className={message.message}>{ props.message.message }</div> 
-               
+                <div className={message.message}>{ props.message.message }</div>  
             </div>
-
         </div>
     )
 

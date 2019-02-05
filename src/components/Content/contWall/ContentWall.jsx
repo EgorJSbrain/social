@@ -6,32 +6,31 @@ import PropTypes from 'prop-types';
 const ContentWall = (props) => {
   
   
-  let posts = props.posts.map((post) => <Post post={post.post} key={post.id}/>);
+  let posts = props.posts.map((post) => <Post post={post} key={post.id}/>);
 
   let newPostElement = React.createRef();
 
-  // let addPost = () => {
-  //   let text = newPostElement.current.value;
-  //  props.addPost(text);
-  //  newPostElement.current.value = "";
-  // };
+  let addPost = () => {
+    let text = newPostElement.current.value;
+   props.addPost(text);
+   newPostElement.current.value = "";
+  };
 
-   debugger;
+  //  debugger;
   return (
     <div className={style.cont_wall}>    
           <div>
             <h2>My posts</h2>
           </div>
           
-          {/* <div>
-            New post
+          <div>
               <div>
                 <textarea ref={newPostElement}></textarea>
               </div>
               <div>
-                <button onClick={ addPost }>Add post</button>
+                <button className={style.button} onClick={ addPost }>Add post</button>
               </div>
-          </div> */}
+          </div>
         
         <div>
           {posts}

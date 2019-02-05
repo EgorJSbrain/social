@@ -1,35 +1,38 @@
 import React from 'react';
-import m from './Dialogs.module.css'
+import styles from './Dialogs.module.css'
 import Dialog from './dialog/Dialog'
 import Message from './message/message'
 import PropTypes from 'prop-types';
 
 const Dialogs = (props) => {
 //    debugger
-    let message = props.addMessage;
+    let {addMessage} = props;
     let newMessageElement = React.createRef();
-    let addMessage = () => {
-        let text = newMessageElement.current.value;
-        alert(text);
+    let onAddMessage = () => {
+        let message = newMessageElement.current.value;
+        addMessage(message);
+        newMessageElement.current.value = "";
+        // alert(text);
       }
-
+    //   debugger
+    // console.log(newMessageElement)
     const dialogs = props.users.map((dialog) => <Dialog dialog={dialog} key={dialog.id}/>);
     const messages = props.messages.map((message) => <Message message={message} key={message.id}/>);
     return (
-        <div className={m.mes}>
+        <div className={styles.mes}>
             
-            <div className={m.user}>
+            <div className={styles.user}>
                 {dialogs} 
             </div>
-            <div className={m.message}>
+            <div className={styles.messages}>
                 {messages}
-                <div>
+                <div className={styles.block_button}>
                     <div>
-                        <textarea ref={ newMessageElement }></textarea>
+                        <textarea ref={ newMessageElement } className={styles.textarea}></textarea>
                     </div>
                         
                     <div>
-                        <button onClick={ addMessage }>Add message</button>
+                        <button onClick={ onAddMessage } className={styles.button}>Add message</button>
                     </div>
                 </div>
             </div>

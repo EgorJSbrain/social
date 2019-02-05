@@ -1,15 +1,15 @@
 .cont {grid-area: content}
 
-
 .cont {grid-template-areas: "avatar"
-                                "photo"
-                                "wall";
+                            "photo"
+                            "wall";
 
   display: grid;
-  grid-template-rows: 4fr 1fr 1fr;
+  grid-template-rows: 2fr 1fr 2fr;
   grid-template-columns: 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 1px;
   margin: 10px;
   overflow-y: auto; 
 }
+

@@ -32,7 +32,7 @@ const App = (props) => {
 
               <div className="app__wrapper-block">
                 <Route path='/profile' render={() => <Content posts={posts} data={data} addPost={addPost}/>}/>
-                <Route path='/dialogs' render={() => <Dialogs messages={messages} users={users} />} addMessage={addMessage}/>
+                <Route path='/dialogs' render={() => <Dialogs messages={messages} users={users} addMessage={addMessage} />} />
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>

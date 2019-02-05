@@ -16,30 +16,30 @@ const state = {
     posts: [
         {
             id: 1,
-            post: 'Hello!',
-            url: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
+            text: 'Hello!',
+            photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
             likes: '',
             dislikes: ''
         },  
         {
             id: 2,
-            post: 'Hello! How are you?',
-            url: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
+            text: 'Hello! How are you?',
+            photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
             likes: '',
             dislikes: ''
         },   
         {
             id: 3,
-            post: 'Hello!',
-            url: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
+            text: 'Hello!',
+            photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
             likes: '',
             dislikes: ''
         }   
     ],
     newPosts: {
         id: 4,
-        post: '',
-        url: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
+        text: '',
+        photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
         likes: '',
         dislikes: ''
     }
@@ -51,19 +51,27 @@ const state = {
         messages: [
         {
             id: 1,
+            avatar: '',
+            author: '',
             message: 'Привет!!!!!!!!!! ЧЁ КАК'
         },
         {
             id: 2,
+            avatar: '',
+            author: '',
             message: 'вдародыпрыпырпплр аы радырарпы трыоры оыорыопы тпытыа ааааааааааааааааааааааааааааааааааааа ааааааааааааааааааааааааааааа ghghgh hjujukuku jukikikikililililil gfrfdcdc '
         },
         {
             id: 3,
+            avatar: '',
+            author: '',
             message: 'utiorutiutoir'
         }
     ],
         newMessage: {
            id: 4,
+           avatar: '',
+           author: '',
            message: '' 
         }
 },
@@ -95,13 +103,22 @@ const state = {
     
 }
 
-// export const addMessage = (obj) => {
-//     state.dialogsPage.messages.push(obj);
-//}
+export const addMessage = (message) => {
+    let newMessage = {
+        id: 4,
+        avatar: '',
+        author: '',
+        message: message
+    }
+    state.dialogsPage.messages.push(newMessage);
+    rerenderEntireTree(state);
+}
+
 export const addPost = (postMesage) => {
     let newPost = {
         id: 5,
-        message: postMesage,
+        photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
+        text: postMesage,
         likeCount: 0
     }
     state.profilePage.posts.push(newPost);

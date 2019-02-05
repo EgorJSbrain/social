@@ -6,6 +6,33 @@
   flex-direction: row;
   justify-content: space-around;
   margin: 10px;
+  
+}
+
+.messages {
+  width: 500px;
+  min-height: 700px;
+  overflow-y: hidden;
+  /* border: 1px solid black; */
+  background-color: rgba(144, 160, 160, 0.247);
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin: 10px;
+  
+}
+
+.textarea {
+  width: 100%;  
+
 }
 
 
+.block_button {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: darkslategray;
+  padding: 10px;
+  
+}

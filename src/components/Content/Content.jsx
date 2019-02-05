@@ -12,18 +12,19 @@ let photo = props.data.photo;
 let posts = props.posts;
     // debugger;
   return (
-    <div className={style.cont}>
-      {/* My content */}
-        {/* <div>
-          <img src="https://images.pexels.com/photos/1146708/pexels-photo-1146708.jpeg?cs=srgb&dl=4k-wallpaper-agriculture-android-wallpaper-1146708.jpg&fm=jpg"></img>
-        </div> */}
-        <span>yo</span>
-      <AvatarDiscription photo={photo} data={props.data}/>
-        <ContentWall posts={posts} addPost={addPost}/>
-       {/*   <UserPhotos /> */}
-      
-    </div>
-    
+      <div className={style.wrapper}>
+        <div className={style.cont}>
+          {/* My content */}
+            {/* <div>
+              <img src="https://images.pexels.com/photos/1146708/pexels-photo-1146708.jpeg?cs=srgb&dl=4k-wallpaper-agriculture-android-wallpaper-1146708.jpg&fm=jpg"></img>
+            </div> */}
+          
+          <AvatarDiscription photo={photo} data={props.data}/>
+            <ContentWall posts={posts} addPost={addPost}/>
+            <UserPhotos />
+          
+        </div>
+      </div>
  );
 
 };

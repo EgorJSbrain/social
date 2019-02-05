@@ -3,6 +3,6 @@
 .userphoto {
   margin: 20px;
   background-color: rgba(196, 202, 202, 0.247);
-
+  max-height: 250px;
 }
 
