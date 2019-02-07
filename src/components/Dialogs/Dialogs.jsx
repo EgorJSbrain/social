@@ -24,18 +24,22 @@ const Dialogs = (props) => {
             <div className={styles.user}>
                 {dialogs} 
             </div>
-            <div className={styles.messages}>
-                {messages}
-                <div className={styles.block_button}>
-                    <div>
-                        <textarea ref={ newMessageElement } className={styles.textarea}></textarea>
+                <div className={styles.messages}>
+                    <div className={styles.block_message} ref={(scroller)=>{window.scroller = scroller}}>
+                    {setTimeout(()=>{window.scroller.scrollTop = window.scroller.scrollHeight;},0)}
+                        {messages}
                     </div>
-                        
-                    <div>
-                        <button onClick={ onAddMessage } className={styles.button}>Add message</button>
-                    </div>
+                        <div className={styles.block_button}>
+                            <div>
+                                <input stule="text" ref={ newMessageElement } className={styles.input}/>
+                                {/* <textarea ref={ newMessageElement } className={styles.textarea}></textarea> */}
+                            </div>
+                                
+                            <div>
+                                <button onClick={ onAddMessage } className={styles.button}>Add message</button>
+                            </div>
+                        </div>
                 </div>
-            </div>
                
         </div>
     )

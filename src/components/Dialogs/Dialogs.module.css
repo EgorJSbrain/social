@@ -22,8 +22,10 @@
   
 }
 
-.textarea {
-  width: 100%;  
+input {
+  width: 470px;  
+  height: 40px;
+  border-radius: 10px;
 
 }
 
@@ -34,5 +36,12 @@
   flex-direction: column;
   background-color: darkslategray;
   padding: 10px;
+  max-width: ;
   
+}
+
+.block_message {
+  height: 600px;
+  overflow: auto;
+
 }

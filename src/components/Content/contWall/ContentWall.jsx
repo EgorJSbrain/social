@@ -25,7 +25,8 @@ const ContentWall = (props) => {
           
           <div>
               <div>
-                <textarea ref={newPostElement}></textarea>
+                <input stule="text" ref={ newPostElement } className={style.input}/>
+                {/* <textarea ref={newPostElement}></textarea> */}
               </div>
               <div>
                 <button className={style.button} onClick={ addPost }>Add post</button>

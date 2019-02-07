@@ -14,9 +14,9 @@ import Settings from './components/Settings/Settings';
 
 
 const App = (props) => {
-  
-  let addMessage = props.addMessage;
-  let addPost = props.addPost;
+  const { store } = props;
+  let addMessage = props.store.addMessage;
+  let addPost = props.store.addPost;
   let { data, posts } = props.state.profilePage;
   let { messages } = props.state.dialogsPage;
   let [ ...users ] = props.state.users;
@@ -31,8 +31,8 @@ const App = (props) => {
             <Aside /> */}
 
               <div className="app__wrapper-block">
-                <Route path='/profile' render={() => <Content posts={posts} data={data} addPost={addPost}/>}/>
-                <Route path='/dialogs' render={() => <Dialogs messages={messages} users={users} addMessage={addMessage} />} />
+                <Route path='/profile' render={() => <Content posts={posts} data={data} addPost={addPost.bind(store)}/>}/>
+                <Route path='/dialogs' render={() => <Dialogs messages={messages} users={users} addMessage={addMessage.bind(store)} />} />
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
