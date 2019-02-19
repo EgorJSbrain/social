@@ -2,20 +2,21 @@ import React from 'react';
 import style from './ContentWall.module.css';
 import Post from './Post/Post';
 import PropTypes from 'prop-types';
+import { addPostActionCreator } from '../../../redux/postReducer';
 
 const ContentWall = (props) => {
-  
+  let store = props.store;
   
   let posts = props.posts.map((post) => <Post post={post} key={post.id}/>);
 
   let newPostElement = React.createRef();
 
-  let addPost = () => {
-    let text = newPostElement.current.value;
-   props.addPost(text);
-   newPostElement.current.value = "";
-  };
-
+ 
+  let onAddPostClick = () => { 
+      let post = newPostElement.current.value;
+      store.dispatch(addPostActionCreator(post)); 
+      newPostElement.current.value = "";
+  }
   //  debugger;
   return (
     <div className={style.cont_wall}>    
@@ -25,11 +26,10 @@ const ContentWall = (props) => {
           
           <div>
               <div>
-                <input stule="text" ref={ newPostElement } className={style.input}/>
-                {/* <textarea ref={newPostElement}></textarea> */}
+                <input type="text" ref={ newPostElement } className={style.input}/>
               </div>
               <div>
-                <button className={style.button} onClick={ addPost }>Add post</button>
+                <button className={style.button} onClick={ e => onAddPostClick() }>Add post</button>
               </div>
           </div>
         

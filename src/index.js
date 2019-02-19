@@ -1,25 +1,38 @@
 import * as serviceWorker from './serviceWorker';
-import store from './redux/store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { createStore, combineReducers } from 'redux';
+import addPostReducer from './redux/postReducer';
+import addMessageReducer from './redux/messageReducer';
 
-const state = store.getState();
 
 
-const rerenderEntireTree = () => {
-    
+let combinedReducers = combineReducers({
+    profilePage: addPostReducer,
+    dialogsPage: addMessageReducer
+});
+
+let store = createStore(combinedReducers);
+
+
+
+store.subscribe( () => {
+    let state = store.getState();
+    rerenderEntireTree(state)
+});
+
+const rerenderEntireTree = (state) => {
     ReactDOM.render(
         <App store={store}
-        state={state}/>, 
+             state={state}/>, 
         document.getElementById('root')
     );
 }
-// debugger
-rerenderEntireTree();
+
     
-store.subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
 
 
 

@@ -7,10 +7,9 @@ import AvatarDiscription from './avatar-discription/AvatarDiscription';
 
 
 const Content = ( props ) => {
-let addPost = props.addPost;
 let photo = props.data.photo;
 let posts = props.posts;
-    // debugger;
+    debugger;
   return (
       <div className={style.wrapper}>
         <div className={style.cont}>
@@ -20,7 +19,7 @@ let posts = props.posts;
             </div> */}
           
           <AvatarDiscription photo={photo} data={props.data}/>
-            <ContentWall posts={posts} addPost={addPost}/>
+            <ContentWall posts={posts} store={props.store}/>
             <UserPhotos />
           
         </div>

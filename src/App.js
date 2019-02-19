@@ -14,13 +14,12 @@ import Settings from './components/Settings/Settings';
 
 
 const App = (props) => {
-  const { store } = props;
-  let addMessage = props.store.addMessage;
-  let addPost = props.store.addPost;
+  
+  
   let { data, posts } = props.state.profilePage;
   let { messages } = props.state.dialogsPage;
-  let [ ...users ] = props.state.users;
-// debugger
+  let users  = [...props.state.dialogsPage.users];
+  // debugger
     return (
       <BrowserRouter>
         <div className='wrapper'>
@@ -31,8 +30,8 @@ const App = (props) => {
             <Aside /> */}
 
               <div className="app__wrapper-block">
-                <Route path='/profile' render={() => <Content posts={posts} data={data} addPost={addPost.bind(store)}/>}/>
-                <Route path='/dialogs' render={() => <Dialogs messages={messages} users={users} addMessage={addMessage.bind(store)} />} />
+                <Route path='/profile' render={() => <Content posts={posts} data={data} store={props.store}/>}/>
+                <Route path='/dialogs' render={() => <Dialogs messages={messages} users={users} store={props.store}/>}/>
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
