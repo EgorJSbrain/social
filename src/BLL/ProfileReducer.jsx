@@ -1,14 +1,6 @@
 const ADD_POST = 'NETWORK/CONTENT_WALL/ADD_POST';
+const ADD_NEW_POST = 'NETWORK/CONTENT_WALL/ADD_NEW_POST'
 let initialState = {
-    data: {
-
-        familyStatus: 'Single',
-        photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
-        city: 'Minsk',
-        birthday: '02.02.1990'
-
-    },
-
     posts: [
         {
             id: 1,
@@ -32,13 +24,15 @@ let initialState = {
             dislikes: ''
         }
     ],
-    newPosts: {
+    newPost: {
         id: 4,
         text: '',
         photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
         likes: '',
         dislikes: ''
-    }
+    },
+
+    newPostMessage: "",
 };
 
 const addPostReducer = ( state = initialState, action ) => {
@@ -48,24 +42,30 @@ const addPostReducer = ( state = initialState, action ) => {
                 let newPost = {
                     id: 5,
                     photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
-                    text: action.text,
+                    text: state.newPostMessage,
                     likeCount: 0
                 }
-                
-                state.posts.unshift(newPost);
-                return state;
-                
+                return {
+                    ...state, 
+                    posts: [ newPost, ...state.posts ], 
+                    newPostMessage: ""
+                };
+            }
+        case ADD_NEW_POST:
+        // console.log(action.text)
+
+            {
+                return {
+                    ...state, 
+                    newPostMessage: action.text
+                }
             }
         default:
             return state;
     }
 };
 
-export const addPostActionCreator = (postMessage) => {
-    return {
-        type: ADD_POST,
-        text: postMessage
-    }
-}
+export const addPostActionCreator = (postMessage) => ({ type: ADD_POST, postMessage })
+export const addNewCommentTextareaCreator = (text) => ({ type: ADD_NEW_POST, text })
 
 export default addPostReducer;

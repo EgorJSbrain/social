@@ -1,7 +1,7 @@
 import React from 'react';
 import navigation from './Navigation.module.css';
 import {NavLink} from 'react-router-dom';
-import Friends from './Friends/Friends';
+import FriendsBlock from './FriendsBlock/FriendsBlock';
 
 
 const Navigation = (props) => {
@@ -10,27 +10,18 @@ const Navigation = (props) => {
     return (
 
         <div>
-            <nav className={navigation.link}>
-                    <div className={`${navigation.link} ${navigation.back}`}>
-                        <NavLink to="/profile" activeClassName={navigation.active}>Profile</NavLink>
-                    </div>
-                    <div className={`${navigation.link} ${navigation.back}`}>
-                        <NavLink to="/dialogs" activeClassName={navigation.active}>Messages</NavLink>
-                    </div>
-                    <div className={`${navigation.link} ${navigation.back}`}>
-                        <NavLink to="/news" activeClassName={navigation.active}>News</NavLink>
-                    </div>
-                    <div className={`${navigation.link} ${navigation.back}`}>
-                        <NavLink to="/music" activeClassName={navigation.active}>Music</NavLink>
-                    </div>
-                    <div className={`${navigation.link} ${navigation.back}`}>
-                        <NavLink to="/settings" activeClassName={navigation.active}>Settings</NavLink>
-                    </div>
-                </nav>
+            <nav className={navigation.link}>  
+                <NavLink to="/profile" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>Profile</NavLink>
+                <NavLink to="/dialogs" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>Messages</NavLink>
+                <NavLink to="/friends" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>Friends</NavLink>
+                <NavLink to="/news" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>News</NavLink>
+                <NavLink to="/music" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>Music</NavLink>
+                <NavLink to="/settings" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>Settings</NavLink>    
+            </nav>
 
-                <div className={navigation.friends}>
-                    <Friends users={props.users}/>
-                </div>
+            <div className={navigation.friends}>
+                <FriendsBlock users={props.users}/>
+            </div>
         </div>
     )
 

@@ -23,8 +23,8 @@
 }
 
 input {
-  width: 470px;  
-  height: 40px;
+  max-width: 450px;  
+  max-height: 40px;
   border-radius: 10px;
 
 }

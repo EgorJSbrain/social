@@ -11,10 +11,10 @@ const AvatarDiscription = (props) => {
     <div className={style.avatar}>
       
         <div>
-          <img src={ props.photo } alt=""></img>  
+          <img src={ props.user.photo } alt=""></img>  
         </div>
          
-       <Discription data={props.data}/>
+       <Discription data={props.user}/>
 
     </div>
   )

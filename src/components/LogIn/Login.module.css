@@ -1,0 +1,11 @@
+.login {
+    border: 1px solid black;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.button {
+    width: 70px;
+    height: 40px;
+    margin: 10px;
+}

@@ -1,8 +1,8 @@
-.wrapper1 {
+.wrapper {
   grid-area: header
 }
 
-.wrapper1 {
+.wrapper {
   display: grid;
   
   grid-template-columns: repeat(6, [col] 1fr);
@@ -11,7 +11,7 @@
   
 }
 
-.wrapper1 img {
+.wrapper img {
   margin: 10px;
   margin-left: 40px;
   width: 56px;
@@ -27,7 +27,7 @@
   grid-column-start: 3;
 }
 
-.button1 {
+.button__signin {
 text-align: center;
 padding-top: 5px;
 margin: 12px; 
@@ -38,7 +38,7 @@ grid-column: 11 / 11;
 background-color: rgb(223, 245, 252);
 }
 
-.button2 {
+.buttonbutton__login {
   padding-top: 5px;
   text-align: center;
   margin: 12px;
@@ -48,9 +48,23 @@ background-color: rgb(223, 245, 252);
   grid-column: 12 / 12;
   background-color: rgb(223, 245, 252);
   }
+.button__logout {
+  padding-top: 5px;
+  text-align: center;
+  margin: 12px;
+  width: 60px;
+  height: 27px;
+  /* border: 1px solid black; */
+  grid-column: 12 / 12;
+  background-color: rgb(223, 245, 252);
+}
 
-  .name {
+.name {
     
     font-size: 40px;
     color: rgb(0, 195, 255);
+  }
+
+.login {
+    text-decoration: none;
   }

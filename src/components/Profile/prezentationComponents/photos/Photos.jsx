@@ -2,7 +2,7 @@ import React from 'react';
 import photo from './photo.module.css';
 
 
-const UserPhotos = () => {
+const PhotosOfUser = () => {
   return (
     <div className={photo.userphoto}>
     
@@ -16,4 +16,4 @@ const UserPhotos = () => {
 
 }
 
-export default UserPhotos;
+export default PhotosOfUser;

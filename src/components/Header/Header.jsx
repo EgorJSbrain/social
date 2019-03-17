@@ -1,27 +1,49 @@
-import React from 'react';
-import wrapper from './Header.module.css'
+import React, {Component} from 'react';
+import styles from './Header.module.css';
+import { connect } from 'react-redux';
+import {NavLink} from 'react-router-dom';
 
-const Header = () => {
+const Header = ( { isAuth }, ...props) => {
+    debugger
     return (
-        <div className={wrapper.wrapper1}>
+        <div className={styles.wrapper}>
+
             <div>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt=""></img>
             </div>
             <div>
-                <span className={wrapper.name}>reactNet</span>
+                <span className={styles.name}>reactNet</span>
             </div>
             <div>
-                <input type="text" className={wrapper.input}/>
+                <input type="text" className={styles.input}/>
             </div>
-            <div className={wrapper.button1}>
-                Sign In
+            <div className={styles.button__logout}>
+                Log Out
             </div>
-            <div className={wrapper.button2}>
-                Login
-            </div>
+
+        {isAuth && <div>
+                        <div className={styles.button__signin}>
+                            Sign In
+                        </div>
+                        <div className={styles.button__login}>
+                            <NavLink to='/' className={styles.login}> Log In </NavLink>   
+                        </div>
+                    </div>}
         </div>
     )
-
 }
 
-export default Header;
+class HeaderContainer extends Component {
+    render() {
+        return <Header {...this.props}/>
+    }
+}
+
+let mapStateToProps = (state) => {
+    return {
+        userInfo: state.auth.userInfo,
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect(mapStateToProps, null)(HeaderContainer);

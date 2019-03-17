@@ -2,22 +2,22 @@ import React from 'react';
 import style from './Discription.module.css'
 
 
-const Discription = ({data }) => {
+const Discription = (props) => {
   // debugger;
   return (
    
         <div className={style.info}> 
           
           <div>
-            День рождения:{data.birthday}
+            День рождения:{props.data.birthday}
           </div>
           
           <div>
-            Город: {data.city}
+            Город: {props.data.city}
           </div>
           
           <div>
-            Семейное положение: {data.status}
+            Семейное положение: {props.data.familyStatus}
           </div>
           
           <div>

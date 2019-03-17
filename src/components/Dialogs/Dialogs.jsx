@@ -3,24 +3,17 @@ import styles from './Dialogs.module.css'
 import Dialog from './dialog/Dialog'
 import Message from './message/message'
 import PropTypes from 'prop-types';
-import { addMessageActionCreator } from '../../redux/messageReducer';
+
 
 const Dialogs = (props) => {
-//    debugger
-    let store= props.store;
-    let newMessageElement = React.createRef();
-    
-    
-    
-    let onAddMessage = () => {
-        let message = newMessageElement.current.value;
-        store.dispatch( addMessageActionCreator(message)); 
-        newMessageElement.current.value = "";
-      }
+    let newMessageText = props.dialogsPage.newMessageText;
+    let {sendTextOnChange} = props;
+   
 
     // console.log(newMessageElement)
-    const dialogs = props.users.map((dialog) => <Dialog dialog={dialog} key={dialog.id}/>);
-    const messages = props.messages.map((message) => <Message message={message} key={message.id}/>);
+    const dialogs = props.users.users.map((dialog) => <Dialog dialog={dialog} key={dialog.id}/>);
+    const messages = props.dialogsPage.messages.map((message) => <Message message={message} key={message.id}/>);
+    
     return (
         <div className={styles.mes}>
             
@@ -34,11 +27,15 @@ const Dialogs = (props) => {
                     </div>
                         <div className={styles.block_button}>
                             <div>
-                                <input ref={ newMessageElement } className={styles.input}/>
+                                <input className={styles.input}
+                                       type='text'
+                                       value={newMessageText}
+                                       onChange={e => sendTextOnChange(e.target.value)}/>
                             </div>
                                 
                             <div>
-                                <button onClick={ e => onAddMessage() } className={styles.button}>Add message</button>
+                                <button className={styles.button}
+                                        onClick={() => props.addMessage(newMessageText) }>Add message</button>
                             </div>
                         </div>
                 </div>

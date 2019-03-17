@@ -1,48 +1,46 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-
+import { connect } from 'react-redux';
 import './App.css';
-import Header from './components/Header/Header';
 import Navigation from './components/Navigation/Navigation';
-import Content from './components/Content/Content';
-// import Footer from './components/Footer/Footer';
-// import Aside from './components/Aside/Aside';
-import Dialogs from './components/Dialogs/Dialogs';
+import HeaderContainer from './components/Header/HeaderContainer';
+import DialogsContainer from './components/Dialogs/containers/DialogsContainer';
+import ProfileContainer from './components/Profile/containerComponents/ProfileContainer';
 import Music from './components/Music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
+import FriendsPageContainer from './components/Friends/FriendsContainer';
+import Login from './components/LogIn/Login';
 
 
 const App = (props) => {
   
+  let users  = props.state.users.users;
   
-  let { data, posts } = props.state.profilePage;
-  let { messages } = props.state.dialogsPage;
-  let users  = [...props.state.dialogsPage.users];
-  // debugger
     return (
       <BrowserRouter>
         <div className='wrapper'>
-          
-            <Header />
+            <HeaderContainer />
             <Navigation users={users}/>
-            {/* <Footer />
-            <Aside /> */}
-
               <div className="app__wrapper-block">
-                <Route path='/profile' render={() => <Content posts={posts} data={data} store={props.store}/>}/>
-                <Route path='/dialogs' render={() => <Dialogs messages={messages} users={users} store={props.store}/>}/>
+                <Route path='/profile' render={() => <ProfileContainer />}/>
+                <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                <Route path='/friends' render={() => <FriendsPageContainer />}/>
+                <Route exact path='/' render={() => <Login />}/>
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
                 
+
               </div>  
-              
-            
-            
         </div>
       </BrowserRouter>);
   }
 
-  export default App;
+  const mapStateToProps = (state) => {
+    return {
+        state: state
+    }
+  }
+  export default connect (mapStateToProps) (App);
 

@@ -3,36 +3,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore, combineReducers } from 'redux';
-import addPostReducer from './redux/postReducer';
-import addMessageReducer from './redux/messageReducer';
-
-
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import ProfileReducer from './BLL/ProfileReducer';
+import DialogsReducer from './BLL/DialogsReducer';
+import UsersReducer from './BLL/UsersReducer';
+import FriendsReducer from './BLL/FriendsReducer';
+import LoginReducer from './BLL/LoginReducer';
+import thunk from 'redux-thunk'
+import AuthReducer from './BLL/AuthReducer';
+import createSagaMiddleware from 'redux-saga';
 
 let combinedReducers = combineReducers({
-    profilePage: addPostReducer,
-    dialogsPage: addMessageReducer
+    profilePage: ProfileReducer,
+    dialogsPage: DialogsReducer,
+    users: UsersReducer,
+    friendsPage: FriendsReducer,
+    login: LoginReducer,
+    auth: AuthReducer
 });
 
-let store = createStore(combinedReducers);
+let midlewares = applyMiddleware(thunk);
+const sagaMiddleware = createSagaMiddleware;
+let store = createStore(combinedReducers, midlewares);
 
-
-
-store.subscribe( () => {
-    let state = store.getState();
-    rerenderEntireTree(state)
-});
-
-const rerenderEntireTree = (state) => {
+const rerenderEntireTree = (store) => {
     ReactDOM.render(
-        <App store={store}
-             state={state}/>, 
+        <Provider store={store}>
+            <App />
+        </Provider>, 
         document.getElementById('root')
     );
 }
-
-    
-rerenderEntireTree(store.getState());
+rerenderEntireTree(store);
 
 
 
