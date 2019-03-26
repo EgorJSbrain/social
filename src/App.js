@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
@@ -11,6 +11,7 @@ import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import FriendsPageContainer from './components/Friends/FriendsContainer';
 import Login from './components/LogIn/Login';
+import User from './components/User/User';
 
 
 const App = (props) => {
@@ -21,17 +22,17 @@ const App = (props) => {
       <BrowserRouter>
         <div className='wrapper'>
             <HeaderContainer />
-            <Navigation users={users}/>
+            { props.isLogin ? <Navigation users={users}/> : null}
               <div className="app__wrapper-block">
-                <Route path='/profile' render={() => <ProfileContainer />}/>
+                <Route path='/profile' render={() => <ProfileContainer /> }/>
                 <Route path='/dialogs' render={() => <DialogsContainer />}/>
                 <Route path='/friends' render={() => <FriendsPageContainer />}/>
                 <Route exact path='/' render={() => <Login />}/>
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
+                <Route path='/users/:userId?' component={User}/>
                 
-
               </div>  
         </div>
       </BrowserRouter>);
@@ -39,7 +40,8 @@ const App = (props) => {
 
   const mapStateToProps = (state) => {
     return {
-        state: state
+        state: state,
+        isLogin: state.login.isLogin
     }
   }
   export default connect (mapStateToProps) (App);

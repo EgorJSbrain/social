@@ -5,8 +5,9 @@ import { loginThunk, statuses } from '../.././BLL/LoginReducer';
 import {Redirect} from 'react-router-dom';
 
 const Login = (props) => {
-    // debugger
+    //  debugger
     let isAuth = props.isAuth;
+    let isLogin = props.isLogin;
     let {status, login, message} = props;
     let loginRef = React.createRef();
     let passwordRef = React.createRef();
@@ -17,22 +18,26 @@ const Login = (props) => {
                         rememberMeRef.current.checked )
     };
     let errorMessageBlock = status === statuses.ERROR && <div className='error'>{message}</div>
-    if (isAuth) {
+    if (isAuth && isLogin) {
         return <Redirect to='/profile'/>
-    }
+    } 
+    if (isLogin) {
+        return <div className={styles.login}>
+        <div>LOGIN<input ref={loginRef} type='text' defaultValue='egorpobylets@gmail.com'/></div>
+        <div>PASSWORD<input ref={passwordRef} type='password' defaultValue='12345'/></div>
+        <div>REMEMBER ME<input ref={rememberMeRef} type='checkbox'/></div>
+        <div><button 
+                onClick={onClickLogin} 
+                className={styles.button}
+                disabled={status === statuses.INPROGRESS}
+            >Login</button></div>
+        {errorMessageBlock}
+   </div>
+    } else { return <></>}  
 
-    return <div className={styles.login}>
-                <div>LOGIN<input ref={loginRef} type='text' defaultValue='egorpobylets@gmail.com'/></div>
-                <div>PASSWORD<input ref={passwordRef} type='password' defaultValue='12345'/></div>
-                <div>REMEMBER ME<input ref={rememberMeRef} type='checkbox'/></div>
-                <div><button 
-                        onClick={onClickLogin} 
-                        className={styles.button}
-                        disabled={status === statuses.INPROGRESS}
-                    >Login</button></div>
-                {errorMessageBlock}
-           </div>
+    
 }
+
 
 
 let mapStateToProps = (state) => {
@@ -40,7 +45,8 @@ let mapStateToProps = (state) => {
          isAuth: state.auth.isAuth,
          status: state.login.status,
          message: state.login.message,
-         captchaUrl: state.login.captchaUrl
+         captchaUrl: state.login.captchaUrl,
+         isLogin: state.login.isLogin
     }
 }
 let mapDispatchToprops = (dispatch) => {

@@ -21,6 +21,9 @@ const Friend = (props) => {
             <div className={style.name}>
                 {user.name}
             </div>
+            <div>
+                {user.id}
+            </div>
         </div>
     )
 }

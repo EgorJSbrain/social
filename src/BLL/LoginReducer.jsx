@@ -3,6 +3,7 @@ import { setIsAuth } from "./AuthReducer";
 
 const SET_STATUS = 'NETWORK/LOGIN/SET_STATUS';
 const SET_MESSAGE = 'NETWORK/LOGIN/SET_MESSAGE';
+const SET_LOGIN = 'NETWORK/LOGIN/SET_LOGIN';
 
 
 export const statuses = {
@@ -15,7 +16,8 @@ export const statuses = {
 
 let initialState = {
     status: statuses.INITIALIZED,
-    message: ''
+    message: '',
+    isLogin: false
 };
 const LoginReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,6 +31,11 @@ const LoginReducer = (state = initialState, action) => {
                 ...state,
                 message: action.message
             }
+            case SET_LOGIN:
+                return {
+                    ...state,
+                    isLogin: action.login
+                }
         default: 
             return state
         
@@ -47,7 +54,8 @@ export const loginThunk = (login, password, rememberMe, captcha) => (dispatch) =
         .then (result => {
             if (result.data.resultCode === 0) {
                 dispatch(setStatus(statuses.SUCCESS))
-                dispatch(setIsAuth(true))
+                dispatch(setIsAuth(true));
+                dispatch(setLogin(true))
             } else {
                 dispatch(setStatus(statuses.ERROR));
                 dispatch(setMessage(result.data.messages[0]));
@@ -55,8 +63,11 @@ export const loginThunk = (login, password, rememberMe, captcha) => (dispatch) =
         })
 };
 
-export const setStatus = (status) => ({type: SET_STATUS, status})
-export const setMessage = (message) => ({type: SET_MESSAGE, message})
+
+
+export const setStatus = (status) => ({type: SET_STATUS, status});
+export const setMessage = (message) => ({type: SET_MESSAGE, message});
+export const setLogin = (login) => ({type: SET_LOGIN, login})
 
 
 export default LoginReducer;

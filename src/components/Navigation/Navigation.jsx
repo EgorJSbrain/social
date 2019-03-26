@@ -17,6 +17,7 @@ const Navigation = (props) => {
                 <NavLink to="/news" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>News</NavLink>
                 <NavLink to="/music" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>Music</NavLink>
                 <NavLink to="/settings" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>Settings</NavLink>    
+                <NavLink to="/users" activeClassName={navigation.active} className={`${navigation.link} ${navigation.back}`}>User</NavLink>    
             </nav>
 
             <div className={navigation.friends}>

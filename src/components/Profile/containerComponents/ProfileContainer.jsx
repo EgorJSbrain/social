@@ -7,7 +7,8 @@ import { addPostActionCreator,
 const mapStateToProps = (state) => {
     return {
         profilePage: state.profilePage,
-        newPostMessage: state.profilePage.newPostMessage
+        newPostMessage: state.profilePage.newPostMessage,
+        isLogin: state.login.isLogin
     }
 }
 const mapDispatchToProps = (dispatch) => {

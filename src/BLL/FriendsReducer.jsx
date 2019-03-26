@@ -47,6 +47,8 @@ export let getFriends = () => (dispatch) => {
         })   
 }    
 
+
+
 export const setUsers = (users) => ({ type: SET_USERS, users })
 export const setStatus = (status) => ({ type: SET_STATUS, status })
     
