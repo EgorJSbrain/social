@@ -3,9 +3,11 @@ import styles from './Login.module.css';
 import { connect } from 'react-redux';
 import { loginThunk, statuses } from '../.././BLL/LoginReducer';
 import {Redirect} from 'react-router-dom';
+// import { setMyId } from '../../BLL/AuthReducer';
+
 
 const Login = (props) => {
-    //  debugger
+    //   debugger
     let isAuth = props.isAuth;
     let isLogin = props.isLogin;
     let {status, login, message} = props;
@@ -19,7 +21,7 @@ const Login = (props) => {
     };
     let errorMessageBlock = status === statuses.ERROR && <div className='error'>{message}</div>
     if (isAuth && isLogin) {
-        return <Redirect to='/profile'/>
+        return <Redirect to={`/profile/${props.myId}`}/>
     } 
     if (isLogin) {
         return <div className={styles.login}>
@@ -41,7 +43,9 @@ const Login = (props) => {
 
 
 let mapStateToProps = (state) => {
+    //  debugger
     return {
+         myId: state.auth.userInfo.userId,
          isAuth: state.auth.isAuth,
          status: state.login.status,
          message: state.login.message,
@@ -53,7 +57,10 @@ let mapDispatchToprops = (dispatch) => {
     return {
         login: (login, password, rememberMe) => {
             dispatch(loginThunk(login, password, rememberMe))
-        }
+        },
+        // setMyId: (userId) => {
+        //     dispatch(setMyId(userId))
+        // }
     }
 }
 

@@ -1,20 +1,23 @@
 import React from 'react';
 import style from './AvatarDiscription.module.css'
-import Discription from './Discription/Discription'
+import UserDiscription from './Discription/Discription'
 import PropTypes from 'prop-types';
+import User from '../../../User/User';
 
 
 const AvatarDiscription = (props) => {
-  
-  // debugger;
+//  let photos = props.users.photos
+  debugger;
   return (
     <div className={style.avatar}>
       
         <div>
-          <img src={ props.user.photo } alt=""></img>  
+          {/* <img src={ 
+              props.user.photos.small == null ? "https://via.placeholder.com/100" : user.photos.small
+            } alt=""></img>   */}
         </div>
          
-       <Discription data={props.user}/>
+       <User data={props.user}/>
 
     </div>
   )

@@ -4,7 +4,7 @@ import { setLogin } from "./LoginReducer";
 
 
 const SET_IS_AUTH = 'NETWORK/AUTH/SET_IS_AUTH';
-// const SET_MY_ID = 'NETWORK/AUTH/SET_MY_ID'
+const SET_MY_ID = 'NETWORK/AUTH/SET_MY_ID'
 
 let initialState = {
     isAuth: false,
@@ -22,13 +22,15 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 isAuth: action.value
             }
-        // case SET_MY_ID:
-        //  debugger
-        //     return {
-
-        //         ...state,
-        //         myId: action.myId
-        //     }
+        case SET_MY_ID:
+    //    debugger
+            return {
+                ...state,
+                userInfo: {
+                    ...state.userInfo, 
+                    userId: action.userId
+                }
+            }
         default: {
             return state
         }
@@ -40,8 +42,11 @@ export const me = () => (dispatch) => {
         .get('auth/me')
         .then(response => {
             if(response.data.resultCode === 0) {
+            //    debugger
+               dispatch(setMyId(response.data.data.id))
                 dispatch(setIsAuth(true))
-                // dispatch(setMyId(response.data.data.id))
+                dispatch(setLogin(true))
+                
 
             }
         })
@@ -59,6 +64,6 @@ export const logOutThunk = () => (dispatch) => {
 }
 
 export const setIsAuth = (value) => ({type: SET_IS_AUTH, value})
-// export const setMyId = (myId) => ({type: SET_MY_ID, myId})
+export const setMyId = (userId) => ({type: SET_MY_ID, userId})
 
 export default AuthReducer;

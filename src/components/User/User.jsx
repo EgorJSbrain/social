@@ -11,7 +11,7 @@ class User extends Component {
             profile: null,
             editMode: false,
             me: null,
-            isOwner: false
+            isOwner: false,
         }
     };
     componentDidMount(){
@@ -25,6 +25,7 @@ class User extends Component {
             .then( response => {
             this.setState({me: response.data.data});
         });
+
         Promise.all([profilePromis, mePromise]).then(()=> {
             let {profile, me} = this.state;
             if (!!me && !!profile && me.id === profile.userId) {
@@ -43,7 +44,23 @@ class User extends Component {
         this.forceUpdate()
     };
     onSaveClick = () => {
-        axios.put('profile', this.state.profile)
+        // debugger
+        axios.put('profile', {
+            "aboutMe": "",
+            "contacts": {
+                facebook: "",
+                github: "",
+                instagram: "",
+                mainLink: null,
+                twitter: "",
+                vk: "",
+                website: null,
+                youtube: null
+            },
+            "lookingForAJob": true,
+            "lookingForAJobDescription": 'не ищу',
+            "fullName": "EGOR"
+        })
             .then((res) => {
                  
             })
@@ -59,13 +76,14 @@ class User extends Component {
         this.forceUpdate();
     }
     render() {
+        
         let { profile, isOwner, editMode } = this.state;
         
         if(this.state.profile) {
             return <div>
                 
                         <h2>{this.state.profile.fullName}</h2>
-                        {isOwner && <span onClick={this.onEditClick}>edit</span>}
+                        {isOwner && <button onClick={this.onEditClick}>edit</button>}
                        
                         <div>
                             <div>

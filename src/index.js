@@ -2,9 +2,9 @@ import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import ProfileReducer from './BLL/ProfileReducer';
 import DialogsReducer from './BLL/DialogsReducer';
 import UsersReducer from './BLL/UsersReducer';
@@ -14,6 +14,7 @@ import thunk from 'redux-thunk'
 import AuthReducer from './BLL/AuthReducer';
 import createSagaMiddleware from 'redux-saga';
 import { sagaRootSocialNetwork } from './BLL/saga';
+import ContainerApp from './AppContainer';
 
 let combinedReducers = combineReducers({
     profilePage: ProfileReducer,
@@ -27,13 +28,13 @@ let combinedReducers = combineReducers({
 const sagaMiddleware = createSagaMiddleware();
 
 let midlewares = applyMiddleware(thunk, sagaMiddleware);
-let store = createStore(combinedReducers, midlewares);
+let store = createStore(combinedReducers, composeWithDevTools(midlewares));
 sagaMiddleware.run(sagaRootSocialNetwork);
 
 const rerenderEntireTree = (store) => {
     ReactDOM.render(
         <Provider store={store}>
-            <App />
+            <ContainerApp />
         </Provider>, 
         document.getElementById('root')
     );

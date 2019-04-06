@@ -2,27 +2,7 @@ const ADD_POST = 'NETWORK/CONTENT_WALL/ADD_POST';
 const ADD_NEW_POST = 'NETWORK/CONTENT_WALL/ADD_NEW_POST'
 let initialState = {
     posts: [
-        {
-            id: 1,
-            text: 'Hello!',
-            photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
-            likes: '',
-            dislikes: ''
-        },
-        {
-            id: 2,
-            text: 'Hello! How are you?',
-            photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
-            likes: '',
-            dislikes: ''
-        },
-        {
-            id: 3,
-            text: 'Hello!',
-            photo: 'https://pp.userapi.com/c633923/v633923155/3d6f4/PDATC-krPis.jpg',
-            likes: '',
-            dislikes: ''
-        }
+        
     ],
     newPost: {
         id: 4,
@@ -64,8 +44,14 @@ const addPostReducer = ( state = initialState, action ) => {
             return state;
     }
 };
+// export const setProfile = () => (dispatch, getState) => {
+    
+//     const myId = getState();
+//     console.log(myId)
+// }
 
 export const addPostActionCreator = (postMessage) => ({ type: ADD_POST, postMessage })
 export const addNewCommentTextareaCreator = (text) => ({ type: ADD_NEW_POST, text })
 
+// export const photosUsersSelector = (state) => { debugger; return state.friendsPage.users.photos }
 export default addPostReducer;

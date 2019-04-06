@@ -1,5 +1,5 @@
 import axios from "../DAL/axios-instatnce";
-import { setIsAuth } from "./AuthReducer";
+import { setIsAuth, setMyId } from "./AuthReducer";
 
 const SET_STATUS = 'NETWORK/LOGIN/SET_STATUS';
 const SET_MESSAGE = 'NETWORK/LOGIN/SET_MESSAGE';
@@ -53,9 +53,9 @@ export const loginThunk = (login, password, rememberMe, captcha) => (dispatch) =
         })
         .then (result => {
             if (result.data.resultCode === 0) {
-                dispatch(setStatus(statuses.SUCCESS))
+                dispatch(setStatus(statuses.SUCCESS));
                 dispatch(setIsAuth(true));
-                dispatch(setLogin(true))
+                dispatch(setLogin(true));
             } else {
                 dispatch(setStatus(statuses.ERROR));
                 dispatch(setMessage(result.data.messages[0]));

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { setUsers, setStatus, getFriends } from '../../BLL/FriendsReducer';
+import { setUsers, setStatus, getFriends, usersSelector, subscribe, unsubscribe, subscribeToUser, unSubscribeToUser } from '../../BLL/FriendsReducer';
 import Friends from './Friends';
 
 class FriendsPageContainer extends React.Component {
@@ -10,6 +10,7 @@ class FriendsPageContainer extends React.Component {
     }
 
     render() {
+        // debugger
         if (!this.props.users.length) {
             return <div>Users not found</div>
         } else {
@@ -19,8 +20,9 @@ class FriendsPageContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    // debugger
     return {
-        users: state.friendsPage.users,
+        users: usersSelector(state),
         status: state.friendsPage.status,
     }
 }
@@ -35,6 +37,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         getFriends: () => {
             dispatch(getFriends())
+        },
+        subscribe: (userId, followed) => {
+            dispatch(subscribeToUser(userId, followed))
+        },
+        unsubscribe: (userId, followed) => {
+            dispatch(unSubscribeToUser(userId, followed))
         }
     }
 }
