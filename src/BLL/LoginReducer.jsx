@@ -1,5 +1,5 @@
 import axios from "../DAL/axios-instatnce";
-import { setIsAuth, setMyId } from "./AuthReducer";
+import { setIsAuth } from "./AuthReducer";
 
 const SET_STATUS = 'NETWORK/LOGIN/SET_STATUS';
 const SET_MESSAGE = 'NETWORK/LOGIN/SET_MESSAGE';

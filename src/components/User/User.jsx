@@ -1,25 +1,25 @@
 import React, {Component} from 'react';
 import axios from "../../DAL/axios-instatnce";
 import {withRouter} from 'react-router-dom';
-// import {NavLink} from 'react-router-dom';
+
 
 
 class User extends Component {
     constructor(props){
         super(props);
+        this.refAvatar = React.createRef()
         this.state = {
             profile: null,
-            editMode: false,
             me: null,
             isOwner: false,
+            editMode: false,
         }
     };
     componentDidMount(){
         let userIdFromUrl = this.props.match.params.userId;
-        console.log(userIdFromUrl);
         let profilePromis = axios.get('profile/' + userIdFromUrl)
             .then( response => {
-                this.setState({profile: response.data});  
+                this.setState({profile: response.data}); 
             });
         let mePromise = axios.get('auth/me')
             .then( response => {
@@ -32,39 +32,20 @@ class User extends Component {
                 this.setState({isOwner: true})
             }
         })
-           
-    
     };
     onEditClick = () => {
         this.setState({editMode: true})
     };
     onContactChange = (newValue, contactKey) => {
         this.state.profile.contacts[contactKey] = newValue;
-        // this.state({profile: this.state.profile})
         this.forceUpdate()
     };
-    onSaveClick = () => {
-        // debugger
-        axios.put('profile', {
-            "aboutMe": "",
-            "contacts": {
-                facebook: "",
-                github: "",
-                instagram: "",
-                mainLink: null,
-                twitter: "",
-                vk: "",
-                website: null,
-                youtube: null
-            },
-            "lookingForAJob": true,
-            "lookingForAJobDescription": 'не ищу',
-            "fullName": "EGOR"
-        })
-            .then((res) => {
-                 
-            })
-        this.setState({editMode: false})
+     onSaveClick = async () => {
+        let userIdFromUrl = this.props.match.params.userId;
+            await axios.put('profile', this.state.profile);
+        let nextResp = await axios.get('profile/' + userIdFromUrl);
+            this.setState({profile: nextResp.data});
+            this.setState({editMode: false});                
     }
     onAboutMe = (e) => {
         let newValue = e.target.value;
@@ -75,22 +56,32 @@ class User extends Component {
         this.state.profile.lookingForAJob = check;
         this.forceUpdate();
     }
+    addAvatar = () => {
+        let formData = new FormData();
+        let imagefile = this.refAvatar;
+        formData.append('image', imagefile.current.files[0]);
+        axios.post('profile/photo', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            } 
+        }).then(res => (console.log(res.data))
+        )
+    }
     render() {
-        
         let { profile, isOwner, editMode } = this.state;
-        
         if(this.state.profile) {
             return <div>
-                
                         <h2>{this.state.profile.fullName}</h2>
-                        {isOwner && <button onClick={this.onEditClick}>edit</button>}
+                        <img src={this.state.profile.photos.large} alt=''></img>
+                        {isOwner && <input ref={this.refAvatar} type='file' onChange={this.addAvatar.bind(this)}></input>}
+                        {isOwner && <button onClick={this.onEditClick.bind(this)}>edit</button>}
                        
                         <div>
                             <div>
                                 {editMode ? <textarea 
-                                        value={profile.aboutMe} 
+                                        value={this.state.profile.aboutMe} 
                                         placeholder={'text'}
-                                        onChange= {this.onAboutMe}></textarea> 
+                                        onChange= {(e) => this.onAboutMe.bind(this)(e)}></textarea> 
                                 : profile.aboutMe}
                             </div>
                            
@@ -101,7 +92,7 @@ class User extends Component {
                                                 {this.state.editMode ? <input value={profile.contacts[key]}
                                                                               onChange={(e) => {
                                                                                 let newValue = e.target.value
-                                                                                this.onContactChange(newValue, key)}}/> :
+                                                                                this.onContactChange.bind(this)(newValue, key)}}/> :
                                                 <span>{profile.contacts[key]}</span>}
                                             </div>
                                 })
@@ -111,18 +102,16 @@ class User extends Component {
                                             checked={profile.lookingForAJob}
                                             onChange={ e => {
                                                 let checked = e.target.checked;
-                                                this.onLookingForAJobChange(checked)
+                                                this.onLookingForAJobChange.bind(this)(checked)
                                             }}/> 
-                                            : <div>{profile.lookingForAJob ? 'Ищу работу' : ''}</div>}
-                            { editMode && <button onClick={this.onSaveClick}>Save</button>}
-                            
-                        </div>
+                                            : <div>{profile.lookingForAJob ? this.state.profile.lookingForAJobDescription : ''}</div>}
+                            { editMode && <button onClick={this.onSaveClick.bind(this)}>Save</button>} 
+                    </div>
             </div>
         } else {
             return <div>loading...</div>
         }  
-    }
-    
+    }    
 }
 
 export default withRouter(User);

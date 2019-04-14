@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { setUsers, setStatus, getFriends, usersSelector, subscribe, unsubscribe, subscribeToUser, unSubscribeToUser } from '../../BLL/FriendsReducer';
+import { setUsers, setStatus, getFriends, usersSelector, subscribeToUser, unSubscribeToUser } from '../../BLL/FriendsReducer';
 import Friends from './Friends';
 
 class FriendsPageContainer extends React.Component {

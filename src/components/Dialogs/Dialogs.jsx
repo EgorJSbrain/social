@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Dialogs.module.css'
-import Dialog from './dialog/Dialog'
+// import Dialog from './dialog/Dialog'
 import Message from './message/message'
 import PropTypes from 'prop-types';
 

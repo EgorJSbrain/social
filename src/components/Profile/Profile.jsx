@@ -9,7 +9,7 @@ import {Redirect} from 'react-router-dom'
 
 const Profile = ( props ) => {
   // debugger
-  if (props.isLogin == false) {
+  if (props.isLogin === false) {
     return <Redirect to='/'/>
   }
 

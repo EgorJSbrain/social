@@ -3,11 +3,8 @@ import axios from "../DAL/axios-instatnce";
 
 const SET_USERS = 'NETWORK/FRIENDS/SET_USERS';
 const SET_STATUS = 'NETWORK/FRIENDS/SET_STATUS';
-const UNSUBSCRIBE_FROM_USER = 'NETWORK/FRIENDS/UNSUBSCRIBE_FROM_USER'
-const SUBSCRIBE_TO_USER = 'NETWORK/FRIENDS/SUBSCRIBE_TO_USER'
-
-
-
+const UNSUBSCRIBE_FROM_USER = 'NETWORK/FRIENDS/UNSUBSCRIBE_FROM_USER';
+const SUBSCRIBE_TO_USER = 'NETWORK/FRIENDS/SUBSCRIBE_TO_USER';
 
 
 export const statuses = {
@@ -19,7 +16,8 @@ export const statuses = {
 
 let initialState = {
     status: {},
-    users: []
+    users: [],
+
 }
 
 const FriendsReducer = (state = initialState, action) => {
@@ -45,6 +43,7 @@ const FriendsReducer = (state = initialState, action) => {
             return {...state, users: state.users.map( u => u.id !== action.userId ? u  : {...u, followed: true}    
             )};       
         }
+        
         default: 
             return state
     }
@@ -73,7 +72,6 @@ export const subscribe = (userId) => ({ type: SUBSCRIBE_TO_USER, userId})
 export const usersSelector = (state) => {
     let users = state.friendsPage.users;
     let usersArray = Object.keys(users).map( key => users[key]);
-    
         return usersArray
 }
 

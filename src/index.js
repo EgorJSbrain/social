@@ -15,6 +15,7 @@ import AuthReducer from './BLL/AuthReducer';
 import createSagaMiddleware from 'redux-saga';
 import { sagaRootSocialNetwork } from './BLL/saga';
 import ContainerApp from './AppContainer';
+import { reducer as formReducer } from 'redux-form'
 
 let combinedReducers = combineReducers({
     profilePage: ProfileReducer,
@@ -22,7 +23,8 @@ let combinedReducers = combineReducers({
     users: UsersReducer,
     friendsPage: FriendsReducer,
     login: LoginReducer,
-    auth: AuthReducer
+    auth: AuthReducer,
+    form: formReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -31,15 +33,14 @@ let midlewares = applyMiddleware(thunk, sagaMiddleware);
 let store = createStore(combinedReducers, composeWithDevTools(midlewares));
 sagaMiddleware.run(sagaRootSocialNetwork);
 
-const rerenderEntireTree = (store) => {
+
     ReactDOM.render(
         <Provider store={store}>
             <ContainerApp />
         </Provider>, 
         document.getElementById('root')
     );
-}
-rerenderEntireTree(store);
+
 
 
 

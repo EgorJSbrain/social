@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -10,7 +10,8 @@ import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import FriendsPageContainer from './components/Friends/FriendsContainer';
 import Login from './components/LogIn/Login';
-import User from './components/User/User';
+import ContactPage from './components/User/contactFormPageContainer';
+// import User from './components/User/User';
 
 
 const App = (props) => {
@@ -32,6 +33,8 @@ const App = (props) => {
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
+                <Route path='/form1' component={ContactPage}/>
+                <Route path='/form2' component={ContactPage}/>
                 {/* <Route path='/users/:userId?' component={User}/> */}
                 
               </div>  

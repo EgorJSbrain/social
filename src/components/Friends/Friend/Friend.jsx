@@ -11,7 +11,6 @@ const Friend = (props) => {
     let subscribe = (e) => {  
         let clickedButton = e.target
         props.subscribe(+clickedButton.dataset.userId)
-        // console.log(+clickedButton.dataset.userId)
     }
 
     if (!user) {

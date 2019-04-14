@@ -23,7 +23,6 @@ const AuthReducer = (state = initialState, action) => {
                 isAuth: action.value
             }
         case SET_MY_ID:
-    //    debugger
             return {
                 ...state,
                 userInfo: {
@@ -42,10 +41,9 @@ export const me = () => (dispatch) => {
         .get('auth/me')
         .then(response => {
             if(response.data.resultCode === 0) {
-            //    debugger
                dispatch(setMyId(response.data.data.id))
-                dispatch(setIsAuth(true))
-                dispatch(setLogin(true))
+               dispatch(setIsAuth(true))
+               dispatch(setLogin(true))
                 
 
             }
@@ -55,7 +53,6 @@ export const logOutThunk = () => (dispatch) => {
     axios
         .post('auth/logout')
         .then(response => {
-            // debugger
             if(response.data.resultCode === 0) {
                 dispatch(setIsAuth(false));
                 dispatch(setLogin(false))

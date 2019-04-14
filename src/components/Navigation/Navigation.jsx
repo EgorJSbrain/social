@@ -1,7 +1,7 @@
 import React from 'react';
 import navigation from './Navigation.module.css';
 import {NavLink} from 'react-router-dom';
-import FriendsBlock from './FriendsBlock/FriendsBlock';
+// import FriendsBlock from './FriendsBlock/FriendsBlock';
 import { connect } from 'react-redux';
 import { usersSelector } from '../../BLL/FriendsReducer';
 
@@ -23,7 +23,7 @@ const Navigation = (props) => {
             </nav>
 
             <div className={navigation.friends}>
-                <FriendsBlock users={props.users}/>
+                {/* <FriendsBlock users={props.users}/> */}
             </div>
         </div>
     )
