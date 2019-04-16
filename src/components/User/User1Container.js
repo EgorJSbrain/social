@@ -1,20 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import User1 from './User1';
 import {withRouter} from 'react-router-dom';
 import { getUsers, changeToggle, addAvatarUser } from '../../BLL/ProfileReducer';
+import PageOfUser from './PageOfUser';
 
 
-class UserContainer extends React.Component {
+class AvatarDiscriptionContainer extends React.Component {
     componentDidMount() {
         this.props.getUsersTC(this.props.match.params.userId)
     }
     render() {
-        return <User1 {...this.props}/>
+        return <PageOfUser {...this.props}/>
     }
 }
 
-const mapStateToProps = (state) => {
+  const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         id: state.auth.userInfo.userId,
@@ -36,6 +36,6 @@ const mapStateToProps = (state) => {
     }
   }
 // debugger
- UserContainer = withRouter(connect (mapStateToProps, mapDispatchToProps)(UserContainer)); 
+AvatarDiscriptionContainer = withRouter(connect (mapStateToProps, mapDispatchToProps)(AvatarDiscriptionContainer)); 
 
-export default UserContainer;
+export default AvatarDiscriptionContainer;

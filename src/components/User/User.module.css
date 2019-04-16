@@ -1,0 +1,64 @@
+.avatar {grid-area: avatar}
+
+.avatar {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  background-color: rgba(196, 202, 202, 0.247);
+  max-height: 1000px;
+}
+.avatar img {
+  margin: 10px;
+  width: 240px;
+  height: 320px;
+  
+}
+.avatarb_lock {
+    display: flex;
+    flex-direction: column;
+    padding-right: -80px;
+}
+.button_add_avatar {
+    display: none;
+}
+.button_edit {
+    display: none;
+}
+.label_add_avatar {
+    border: 0.2px solid black;
+    text-align: center;
+    background-color: rgba(223, 247, 239, 0.815);
+    max-width: 200px;
+    margin: 10px 30px;
+    padding: 6px;
+    cursor: pointer;
+}
+.edit_label {
+    max-width: 46px;
+    max-height: 46px;
+    cursor: pointer;
+}
+.user_discription_block {
+    margin: 8px;
+}
+.discription_block {
+    margin: 24px;
+}
+
+.user_discription_block {
+    margin: 16px;
+}
+
+.input_block_information {
+   padding-left: 80px
+}
+.input_user{
+    border-radius: 12px;
+    margin: 5px;
+    width: 360px;
+    height: 42px;
+}
+
+.input_block {
+    padding: 20px;
+}

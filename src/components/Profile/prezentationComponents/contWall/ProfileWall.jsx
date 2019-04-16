@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 
 
 const ProfileWall = (props) => {
-  let {sendPostOnChange} = props;
-  
-  let posts = props.profileWall.posts.map((post) => <Post post={post} key={post.id}/>);
   let newPostMessage = props.newPostMessage;
   
 
@@ -19,19 +16,21 @@ const ProfileWall = (props) => {
           
           <div>
               <div>
-                <input className={style.input}
+                <input className={style.input_post}
                        type="text" 
-                       onChange={e => sendPostOnChange(e.target.value)} 
+                       onChange={e => props.sendPostOnChange(e.target.value)} 
                        value={newPostMessage}/>
               </div>
               <div>
                 <button className={style.button} 
-                        onClick={() => props.addPost(newPostMessage)}>Add post</button>
+                        onClick={() => props.addPost(props.newPostMessage)}>Add post</button>
               </div>
           </div>
         
         <div>
-          {posts}
+          {
+            props.profileWall.posts.map((post) => <Post post={post} key={post.id}/>)
+          }
         </div>
     </div>
     

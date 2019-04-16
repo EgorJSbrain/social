@@ -25,19 +25,20 @@ const App = (props) => {
             { props.isAuth ? <Navigation /> : null}
             
               <div className="app__wrapper-block">
-                <Route path='/user/:userId?' render={() => <ProfileContainer /> }/>
-                <Route path='/profile/:userId?' render={() => <ProfileContainer /> }/>
-                <Route path='/dialogs' render={() => <DialogsContainer />}/>
-                <Route path='/friends' render={() => <FriendsPageContainer />}/>
-                <Route exact path='/' render={() => <Login />}/>
-                <Route path='/news' component={News}/>
-                <Route path='/music' component={Music}/>
-                <Route path='/settings' component={Settings}/>
+                { props.isAuth && <Route path='/user/:userId?' render={() => <ProfileContainer /> }/>}
+                { props.isAuth && <Route path='/profile/:userId?' render={() => <ProfileContainer /> }/>}
+                { props.isAuth && <Route path='/dialogs' render={() => <DialogsContainer />}/>}
+                { props.isAuth && <Route path='/friends' render={() => <FriendsPageContainer />}/>}
+                { props.isAuth && <Route path='/news' component={News}/>}
+                { props.isAuth && <Route path='/music' component={Music}/>}
+                { props.isAuth && <Route path='/settings' component={Settings}/>}
                 <Route path='/form1' component={ContactPage}/>
                 <Route path='/form2' component={ContactPage}/>
                 {/* <Route path='/users/:userId?' component={User}/> */}
-                
               </div>  
+              <div>
+                <Route exact path='/' render={() => <Login />}/>
+              </div>
         </div>
       </BrowserRouter>);
   }

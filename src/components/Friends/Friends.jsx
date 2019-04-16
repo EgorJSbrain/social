@@ -6,6 +6,9 @@ const Friends = (props) => {
 //  debugger
     return (
         <div className={style.wrapper}>
+        <div>
+            <input placeholder="search"/>
+        </div>
             {
                 props.users.map( (user) => <Friend user={user} key={user.id} {...props}/> )
             }

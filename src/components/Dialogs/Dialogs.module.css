@@ -6,14 +6,13 @@
   flex-direction: row;
   justify-content: space-around;
   margin: 10px;
-  
+  max-width: 1200px; 
 }
 
 .messages {
   width: 500px;
   min-height: 700px;
   overflow-y: hidden;
-  /* border: 1px solid black; */
   background-color: rgba(144, 160, 160, 0.247);
   display: flex;
   justify-content: flex-end;
@@ -22,9 +21,9 @@
   
 }
 
-input {
-  max-width: 450px;  
-  max-height: 40px;
+.input_dialogs {
+  width: 475px;  
+  height: 40px;
   border-radius: 10px;
 
 }
@@ -36,7 +35,7 @@ input {
   flex-direction: column;
   background-color: darkslategray;
   padding: 10px;
-  max-width: ;
+  max-width: 480px;
   
 }
 

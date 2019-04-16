@@ -15,6 +15,7 @@ export const statuses = {
 }
 
 let initialState = {
+    filter: '',
     status: {},
     users: [],
 

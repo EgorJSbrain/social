@@ -22,6 +22,7 @@ class FriendsPageContainer extends React.Component {
 const mapStateToProps = (state) => {
     // debugger
     return {
+        filter: state.friendsPage.filter,
         users: usersSelector(state),
         status: state.friendsPage.status,
     }

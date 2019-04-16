@@ -12,22 +12,21 @@ const Dialogs = (props) => {
 
     // console.log(newMessageElement)
     //const dialogs = props.users.users.map((dialog) => <Dialog dialog={dialog} key={dialog.id}/>);
-    const messages = props.dialogsPage.messages.map((message) => <Message message={message} key={message.id}/>);
+    
     
     return (
         <div className={styles.mes}>
             
-            {/* <div className={styles.user}>
-                {dialogs} 
-            </div> */}
                 <div className={styles.messages}>
                     <div className={styles.block_message} ref={(scroller)=>{window.scroller = scroller}}>
                     {(() => {setTimeout(()=>{window.scroller.scrollTop = window.scroller.scrollHeight;},0); return ''})()}
-                        {messages}
+                        {
+                            props.dialogsPage.messages.map((message) => <Message message={message} key={message.id}/>)
+                        }
                     </div>
                         <div className={styles.block_button}>
                             <div>
-                                <input className={styles.input}
+                                <input className={styles.input_dialogs}
                                        type='text'
                                        value={newMessageText}
                                        onChange={e => sendTextOnChange(e.target.value)}/>

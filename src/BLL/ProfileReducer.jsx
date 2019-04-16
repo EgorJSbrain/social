@@ -59,12 +59,6 @@ const addPostReducer = ( state = initialState, action ) => {
                     toggleFlag: !state.toggleFlag
             }
         }
-        // case ADD_AVATAR: {
-        //     return {
-        //         ...state,
-        //         profile: {...state.profile}
-        //     }
-        //}
         default:
                 return state;
     }
