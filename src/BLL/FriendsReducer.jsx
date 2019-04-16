@@ -5,6 +5,7 @@ const SET_USERS = 'NETWORK/FRIENDS/SET_USERS';
 const SET_STATUS = 'NETWORK/FRIENDS/SET_STATUS';
 const UNSUBSCRIBE_FROM_USER = 'NETWORK/FRIENDS/UNSUBSCRIBE_FROM_USER';
 const SUBSCRIBE_TO_USER = 'NETWORK/FRIENDS/SUBSCRIBE_TO_USER';
+const SET_FILTER = 'NETWORK/FRIENDS/SET_FILTER'
 
 
 export const statuses = {
@@ -44,6 +45,9 @@ const FriendsReducer = (state = initialState, action) => {
             return {...state, users: state.users.map( u => u.id !== action.userId ? u  : {...u, followed: true}    
             )};       
         }
+        case SET_FILTER: {
+           return { ...state, filter: action.filter}
+        }
         
         default: 
             return state
@@ -66,15 +70,21 @@ export const unSubscribeToUser = (userId) => async(dispatch) => {
 
 export const setUsers = (users) => ({ type: SET_USERS, users })
 export const setStatus = (status) => ({ type: SET_STATUS, status })
-export const unsubscribe = (userId) => ({type: UNSUBSCRIBE_FROM_USER, userId})
+export const unsubscribe = (userId) => ({ type: UNSUBSCRIBE_FROM_USER, userId})
 export const subscribe = (userId) => ({ type: SUBSCRIBE_TO_USER, userId})
-
+export const setFilter = (filter) => ({ type: SET_FILTER, filter})
  
 export const usersSelector = (state) => {
     let users = state.friendsPage.users;
     let usersArray = Object.keys(users).map( key => users[key]);
         return usersArray
 }
+// export const getFilteredUsersSelector = (state) => {
+//     debugger
+//     return state.friendsPage.users.filter( user => user.name.toLowerCase().indexOf(state.friendsPage.users.filter) > -1 );
+// }
+
+// .filter( user => user.name.toLowerCase().indexOf(this.props.filter) > -1 )
 
 export default FriendsReducer;
 

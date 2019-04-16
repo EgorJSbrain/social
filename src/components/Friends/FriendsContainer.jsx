@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { setUsers, setStatus, getFriends, usersSelector, subscribeToUser, unSubscribeToUser } from '../../BLL/FriendsReducer';
+import { setStatus, getFriends, subscribeToUser, unSubscribeToUser, setFilter, usersSelector } from '../../BLL/FriendsReducer';
 import Friends from './Friends';
 
 class FriendsPageContainer extends React.Component {
@@ -30,9 +30,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUsers: (users) => {
-            dispatch(setUsers(users))
-        },
         setStatus: (status) => {
             dispatch(setStatus(status))
         },
@@ -44,6 +41,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         unsubscribe: (userId, followed) => {
             dispatch(unSubscribeToUser(userId, followed))
+        },
+        setFilter: (filter) => {
+            dispatch(setFilter(filter))
         }
     }
 }
