@@ -2,10 +2,12 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import Dialogs from '../Dialogs';
 import { addNewMessageActionCreator, 
-         setDialogs,
          setCurrentDialogId,
-         setMessages,
-         appendMessages} from '../../../BLL/DialogsReducer';
+         appendMessages,
+         getDialogsTC,
+         setMessagesOfDialogsTC,
+         getMessagesTC,
+         sendMessageTC} from '../../../BLL/DialogsReducer';
 
 
 
@@ -16,17 +18,15 @@ const mapStateToProps = (state) => {
         messages: state.dialogsPage.messages,
         newMessageText: state.dialogsPage.newMessageText,
         currentDialogId: state.dialogsPage.currentDialogId,
-         
-        // users: state.users,
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        setMessages: (messages) => {
-            dispatch(setMessages(messages))
+        getMessages: (userId) => {
+            dispatch(getMessagesTC(userId))
         },
-        setDialogs: (dialogs) => {
-            dispatch(setDialogs(dialogs))
+        getDialogs: (dialogs) => {
+            dispatch(getDialogsTC(dialogs))
         },
         setCurrentDialogId: (id) => {
             dispatch(setCurrentDialogId(id))
@@ -34,12 +34,14 @@ const mapDispatchToProps = (dispatch) => {
         appendMessages: (messages) => {
             dispatch(appendMessages(messages))
         },
-        // addMessage: (message) => {
-        //     message && 
-        //     dispatch(addMessageActionCreator(message))
-        // },
+        setMessagesOfDialogs: (userId) => {
+            dispatch(setMessagesOfDialogsTC(userId))
+        },
         sendTextOnChange: (textMessage) => { 
             dispatch(addNewMessageActionCreator(textMessage))
+        },
+        sendMessage: (message) => {
+            dispatch(sendMessageTC(message))
         }
     }
 }

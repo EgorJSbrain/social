@@ -41,11 +41,13 @@
   padding: 10px;
   max-width: 480px;
   bottom: 0px;
+  
 }
 
 .block_message {
   height: 800px;
   overflow-y: scroll;
+  /* border: 1px solid red */
 }
 
 .dialogs_active {
