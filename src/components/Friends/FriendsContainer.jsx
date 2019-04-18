@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { setStatus, getFriends, subscribeToUser, unSubscribeToUser, setFilter, usersSelector } from '../../BLL/FriendsReducer';
+import { setStatus, getFriends, subscribeToUser, unSubscribeToUser, setFilter, getFilteredUsersSelector } from '../../BLL/FriendsReducer';
 import Friends from './Friends';
 
 class FriendsPageContainer extends React.Component {
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
     // debugger
     return {
         filter: state.friendsPage.filter,
-        users: usersSelector(state),
+        users: getFilteredUsersSelector(state),
         status: state.friendsPage.status,
     }
 }

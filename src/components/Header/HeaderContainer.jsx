@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import { me, logOutThunk } from '../../BLL/AuthReducer';
 import { setLogin } from '../../BLL/LoginReducer';
+import UnreadMessagesCount from './messagesCounter/UnreadMessagesCount';
 
 
 const Header = ( { isAuth, logOut, logIn }, props ) => {
@@ -19,8 +20,12 @@ const Header = ( { isAuth, logOut, logIn }, props ) => {
                 <div>
                     <span className={styles.name}>reactNet</span>
                 </div>
+                
                 <div>
                     <input type="text" className={styles.input}/>
+                </div>
+                <div>
+                    <UnreadMessagesCount/>
                 </div>
                 <div className={styles.button__logout} onClick={() => logOut()}>
                     Log Out
@@ -38,6 +43,7 @@ const Header = ( { isAuth, logOut, logIn }, props ) => {
                     <div>
                         <input type="text" className={styles.input}/>
                     </div>
+                    
                     <div className={styles.button__login} onClick={() => logIn()}>
                         <NavLink to='/' className={styles.login}> Log In </NavLink>
                     </div>

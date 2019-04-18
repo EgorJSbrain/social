@@ -7,28 +7,32 @@
   justify-content: space-around;
   margin: 10px;
   max-width: 1200px; 
+  right: 0px;
 }
 
-.messages {
+.messages_block {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
   width: 500px;
   min-height: 700px;
-  overflow-y: hidden;
   background-color: rgba(144, 160, 160, 0.247);
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-  margin: 10px;
-  
+}
+.dialogs_block {
+  width: 500px;
+  min-height: 887px; 
+  max-height: 700px; 
+  overflow-y: scroll;
+  background-color: rgba(144, 160, 160, 0.247);
 }
 
 .input_dialogs {
   width: 475px;  
   height: 40px;
   border-radius: 10px;
-
+  
+  
 }
-
-
 .block_button {
   display: flex;
   align-items: flex-start;
@@ -36,11 +40,14 @@
   background-color: darkslategray;
   padding: 10px;
   max-width: 480px;
-  
+  bottom: 0px;
 }
 
 .block_message {
-  height: 600px;
-  overflow: auto;
+  height: 800px;
+  overflow-y: scroll;
+}
 
+.dialogs_active {
+  border: 1px solid red
 }

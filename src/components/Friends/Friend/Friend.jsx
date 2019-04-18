@@ -26,6 +26,9 @@ const Friend = (props) => {
                              className={style.avatar__small}/>
                     </div>
                 </NavLink>
+                <NavLink to={'dialogs/' + user.id}>
+                    send message
+                </NavLink>
                 <div className={style.status}>
                     {user.status ? user.status : 'no status' }
                 </div>

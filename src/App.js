@@ -28,7 +28,8 @@ const App = (props) => {
                 { props.isAuth && <>
                     <Route path='/user/:userId?' render={() => <ProfileContainer /> }/>
                     <Route path='/profile/:userId?' render={() => <ProfileContainer /> }/>
-                    <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                    {/* <Route path='/dialogs' render={() => <DialogsContainer />}/> */}
+                    <Route path='/dialogs/:userId?' render={() => <DialogsContainer />}/>
                     <Route path='/friends' render={() => <FriendsPageContainer />}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>

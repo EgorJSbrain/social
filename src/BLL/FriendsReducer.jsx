@@ -79,10 +79,9 @@ export const usersSelector = (state) => {
     let usersArray = Object.keys(users).map( key => users[key]);
         return usersArray
 }
-// export const getFilteredUsersSelector = (state) => {
-//     debugger
-//     return state.friendsPage.users.filter( user => user.name.toLowerCase().indexOf(state.friendsPage.users.filter) > -1 );
-// }
+export const getFilteredUsersSelector = (state) => {
+    return state.friendsPage.users.filter( user => user.name.toLowerCase().indexOf(state.friendsPage.filter) > -1 );
+}
 
 // .filter( user => user.name.toLowerCase().indexOf(this.props.filter) > -1 )
 

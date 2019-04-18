@@ -3,11 +3,15 @@ import message from './message.module.css'
 
 
 const Message = (props) => {
+    // debugger
     return (
         <div className={message.mes}> 
         
             <div>
-                <div className={message.message}>{ props.message.message }</div>  
+                <div><b>{props.message.senderName}</b></div>
+                <div className={message.message}>
+                    { props.message.body }
+                </div>  
             </div>
         </div>
     )

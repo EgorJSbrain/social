@@ -33,7 +33,7 @@ onSearchChange(e) {
                 </div>
                 {
                     this.props.users
-                        .filter( user => user.name.toLowerCase().indexOf(this.props.filter) > -1 )
+                        // .filter( user => user.name.toLowerCase().indexOf(this.props.filter) > -1 )
                         .map( (user) => <Friend user={user} key={user.id} {...this.props}/> )
                 }
             </div>         
